@@ -1,0 +1,106 @@
+[
+  {
+    "id": "sample-1-xss",
+    "name": "Reflected XSS",
+    "inputType": "code",
+    "content": "const express = require('express');\nconst app = express();\n\napp.get('/search', (req, res) => {\n  const query = req.query.q;\n  res.send(`<h1>Search Results for: ${query}</h1>`);\n});\n\napp.listen(3000);",
+    "expectedOutput": {
+      "is_vulnerable": true,
+      "vulnerability_type": "Cross-Site Scripting (Reflected XSS)",
+      "owasp_category": "A03:2021-Injection",
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+      "severity_label": "Medium",
+      "explanation": "The application reflects untrusted user input `req.query.q` directly into the HTML response without any sanitization or encoding. An attacker can craft a malicious URL containing a JavaScript payload that will be executed in the victim's browser when they visit the link.",
+      "secure_patch": "const xss = require('xss');\napp.get('/search', (req, res) => {\n  const query = req.query.q;\n  const safeQuery = xss(query);\n  res.send(`<h1>Search Results for: ${safeQuery}</h1>`);\n});",
+      "recommendations": [
+        "Implement output encoding for all user-supplied data reflected in HTML.",
+        "Use a templating engine (like EJS, Pug) that automatically escapes HTML by default.",
+        "Implement a strong Content Security Policy (CSP) to restrict script execution."
+      ],
+      "confidence": "High"
+    }
+  },
+  {
+    "id": "sample-2-sqli",
+    "name": "SQL Injection",
+    "inputType": "code",
+    "content": "import sqlite3\n\ndef get_user(user_id):\n    conn = sqlite3.connect('users.db')\n    cursor = conn.cursor()\n    # Vulnerable query\n    query = \"SELECT * FROM users WHERE id = \" + str(user_id)\n    cursor.execute(query)\n    return cursor.fetchone()",
+    "expectedOutput": {
+      "is_vulnerable": true,
+      "vulnerability_type": "SQL Injection (SQLi)",
+      "owasp_category": "A03:2021-Injection",
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity_label": "Critical",
+      "explanation": "The code concatenates user input directly into a SQL query string. This allows an attacker to manipulate the input to change the structure of the SQL query, potentially dumping the entire database, modifying records, or bypassing authentication.",
+      "secure_patch": "import sqlite3\n\ndef get_user(user_id):\n    conn = sqlite3.connect('users.db')\n    cursor = conn.cursor()\n    # Secure parameterized query\n    query = \"SELECT * FROM users WHERE id = ?\"\n    cursor.execute(query, (user_id,))\n    return cursor.fetchone()",
+      "recommendations": [
+        "Always use parameterized queries or prepared statements when interacting with databases.",
+        "Avoid string concatenation to build SQL statements.",
+        "Consider using an ORM (Object-Relational Mapper) which typically handles parameterization securely by default."
+      ],
+      "confidence": "High"
+    }
+  },
+  {
+    "id": "sample-3-secure",
+    "name": "Secure Code",
+    "inputType": "code",
+    "content": "const express = require('express');\nconst validator = require('validator');\nconst app = express();\n\napp.post('/profile', express.json(), (req, res) => {\n  const email = req.body.email;\n  if (validator.isEmail(email)) {\n    // process email\n    res.status(200).send('Profile updated');\n  } else {\n    res.status(400).send('Invalid email format');\n  }\n});",
+    "expectedOutput": {
+      "is_vulnerable": false,
+      "vulnerability_type": null,
+      "owasp_category": null,
+      "cvss_vector": null,
+      "severity_label": "None",
+      "explanation": "This code segment properly validates user input (the email address) before processing it. By using a validation library, it ensures that the input conforms to expected formats, reducing the attack surface.",
+      "secure_patch": "// No patch needed. Consider adding rate limiting to the endpoint as a defense-in-depth measure.",
+      "recommendations": [
+        "Continue validating all data boundaries.",
+        "Implement rate limiting to prevent brute-force or denial of service attacks against this endpoint."
+      ],
+      "confidence": "High"
+    }
+  },
+  {
+    "id": "sample-4-cve",
+    "name": "CVE Description",
+    "inputType": "cve",
+    "content": "CVE-2021-44228: Apache Log4j2 JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled.",
+    "expectedOutput": {
+      "is_vulnerable": true,
+      "vulnerability_type": "Remote Code Execution (RCE) / Deserialization",
+      "owasp_category": "A08:2021-Software and Data Integrity Failures",
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "severity_label": "Critical",
+      "explanation": "This describes \"Log4Shell\", a critical vulnerability in the Log4j library. It allows attackers to execute arbitrary code by supplying a malicious JNDI string (e.g., via HTTP headers or inputs that get logged) that Log4j attempts to resolve, fetching and executing a payload from an attacker-controlled server.",
+      "secure_patch": "// Update pom.xml or build.gradle\n<dependency>\n  <groupId>org.apache.logging.log4j</groupId>\n  <artifactId>log4j-core</artifactId>\n  <version>2.17.1</version> <!-- or latest secure version -->\n</dependency>",
+      "recommendations": [
+        "Upgrade Log4j to version 2.15.0 or later (2.17.1+ recommended).",
+        "If patching is not immediately possible, set the system property `log4j2.formatMsgNoLookups` to `true`.",
+        "Implement egress filtering on servers to prevent outbound connections to arbitrary LDAP/RMI servers."
+      ],
+      "confidence": "High"
+    }
+  },
+  {
+    "id": "sample-5-url",
+    "name": "URL Analysis",
+    "inputType": "url",
+    "content": "http://admin-portal.internal.company.com:8080/debug/pprof/profile?seconds=30",
+    "expectedOutput": {
+      "is_vulnerable": true,
+      "vulnerability_type": "Information Disclosure / Unauthenticated Debug Endpoint",
+      "owasp_category": "A05:2021-Security Misconfiguration",
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+      "severity_label": "High",
+      "explanation": "The URL points to a diagnostic/profiling endpoint over unencrypted HTTP. These endpoints often leak sensitive internal state, memory heaps, or configuration details that attackers can use to map the application or extract secrets. It appears to be accessible without authentication.",
+      "secure_patch": "1. Require authentication for all /debug/* paths.\n2. Bind debug endpoints to localhost (127.0.0.1) rather than all interfaces.\n3. Enforce HTTPS.",
+      "recommendations": [
+        "Restrict access to profiling and debugging endpoints using strong authentication or network firewalls.",
+        "Disable debugging tools in production environments entirely if they are not actively required.",
+        "Ensure all administrative interfaces require TLS (HTTPS)."
+      ],
+      "confidence": "Medium"
+    }
+  }
+]

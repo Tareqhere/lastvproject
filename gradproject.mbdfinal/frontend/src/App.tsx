@@ -650,7 +650,13 @@ function CyberRiskMap({ entries }: { entries: RiskMapEntry[] }) {
       </p>
 
       <div style={{ overflowX: 'auto' }}>
-        <div style={{ display: 'inline-block', minWidth: ROW_LABEL_W + 5 * CELL_W + 4 * 3 }}>
+        <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 30 }}>
+            <div style={{ transform: 'rotate(-90deg)', fontSize: 11, fontWeight: 700, color: '#374151', whiteSpace: 'nowrap' }}>
+              Impact →
+            </div>
+          </div>
+          <div style={{ display: 'inline-block', minWidth: ROW_LABEL_W + 5 * CELL_W + 4 * 3 }}>
 
           {/* Column headers */}
           <div style={{ display: 'flex', marginLeft: ROW_LABEL_W }}>
@@ -746,6 +752,7 @@ function CyberRiskMap({ entries }: { entries: RiskMapEntry[] }) {
             <div style={{ height: 2, flex: 1, background: 'linear-gradient(to right, #22c55e, #eab308, #f97316, #ef4444)', borderRadius: 2, printColorAdjust: 'exact', WebkitPrintColorAdjust: 'exact' }} />
             <div style={{ fontSize: 11, fontWeight: 700, color: '#374151', whiteSpace: 'nowrap' }}>Likelihood →</div>
           </div>
+        </div>
         </div>
       </div>
 
@@ -904,37 +911,12 @@ export default function App() {
                   />
                   <div className="absolute left-0 top-full mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-20">
                     <button
-                      onClick={() => { setMenuOpen(false); }}
-                      className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-3 text-gray-700"
-                    >
-                      <Settings className="w-4 h-4" />
-                      Settings
-                    </button>
-                    {auth.authenticated && (
-                      <button
-                        onClick={() => { setMenuOpen(false); }}
-                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-3 text-gray-700"
-                      >
-                        <User className="w-4 h-4" />
-                        Account
-                      </button>
-                    )}
-                    <button
                       onClick={() => { setMenuOpen(false); setHistoryOpen(true); }}
                       className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-3 text-gray-700"
                     >
                       <History className="w-4 h-4" />
                       History
                     </button>
-                    {auth.authenticated && (
-                      <button
-                        onClick={handleLogout}
-                        className="w-full px-4 py-2 text-left hover:bg-gray-50 flex items-center gap-3 text-red-600"
-                      >
-                        <LogOut className="w-4 h-4" />
-                        Sign Out
-                      </button>
-                    )}
                   </div>
                 </>
               )}
@@ -948,7 +930,7 @@ export default function App() {
 
           {/* Right Auth Buttons */}
           <div className="flex items-center gap-3">
-              {auth.authenticated ? (
+              {auth.authenticated && (
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-gray-600">{auth.user?.email}</span>
                   <button
@@ -958,21 +940,6 @@ export default function App() {
                     Sign Out
                   </button>
                 </div>
-              ) : (
-                <>
-                  <button
-                    onClick={() => setAuthModal('signin')}
-                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
-                  >
-                    Sign In
-                  </button>
-                  <button
-                    onClick={() => setAuthModal('signup')}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                  >
-                    Sign Up
-                  </button>
-                </>
               )}
             </div>
           </div>

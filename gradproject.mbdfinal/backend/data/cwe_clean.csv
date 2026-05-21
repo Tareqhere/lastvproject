@@ -118,7 +118,6 @@ CWE-1174,ASP.NET Misconfiguration: Improper Model Validation
 CWE-1176,Inefficient CPU Computation
 CWE-1177,Use of Prohibited Code
 CWE-118,Incorrect Access of Indexable Resource ('Range Error')
-CWE-1187,DEPRECATED: Use of Uninitialized Resource
 CWE-1188,Initialization of a Resource with an Insecure Default
 CWE-1189,Improper Isolation of Shared Resources on System-on-a-Chip (SoC)
 CWE-119,Improper Restriction of Operations within the Bounds of a Memory Buffer
@@ -231,12 +230,10 @@ CWE-1316,Fabric-Address Map Allows Programming of Unwarranted Overlaps of Protec
 CWE-1317,Improper Access Control in Fabric Bridge
 CWE-1318,Missing Support for Security Features in On-chip Fabrics or Buses
 CWE-1319,Improper Protection against Electromagnetic Fault Injection (EM-FI)
-CWE-132,DEPRECATED: Miscalculated Null Termination
 CWE-1320,Improper Protection for Outbound Error Messages and Alert Signals
 CWE-1321,Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')
 CWE-1322,"Use of Blocking Code in Single-threaded, Non-blocking Context"
 CWE-1323,Improper Management of Sensitive Trace Data
-CWE-1324,DEPRECATED: Sensitive Information Accessible by Physical Probing of JTAG Interface
 CWE-1325,Improperly Controlled Sequential Memory Allocation
 CWE-1326,Missing Immutable Root of Trust in Hardware
 CWE-1327,Binding to an Unrestricted IP Address
@@ -354,9 +351,6 @@ CWE-212,Improper Removal of Sensitive Information Before Storage or Transfer
 CWE-213,Exposure of Sensitive Information Due to Incompatible Policies
 CWE-214,Invocation of Process Using Visible Sensitive Information
 CWE-215,Insertion of Sensitive Information Into Debugging Code
-CWE-216,DEPRECATED: Containment Errors (Container Errors)
-CWE-217,DEPRECATED: Failure to Protect Stored Data from Modification
-CWE-218,DEPRECATED: Failure to provide confidentiality for stored data
 CWE-219,Storage of File with Sensitive Data Under Web Root
 CWE-22,Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
 CWE-220,Storage of File With Sensitive Data Under FTP Root
@@ -364,7 +358,6 @@ CWE-221,Information Loss or Omission
 CWE-222,Truncation of Security-relevant Information
 CWE-223,Omission of Security-relevant Information
 CWE-224,Obscured Security-relevant Information by Alternate Name
-CWE-225,DEPRECATED: General Information Management Problems
 CWE-226,Sensitive Information in Resource Not Removed Before Reuse
 CWE-228,Improper Handling of Syntactically Invalid Structure
 CWE-229,Improper Handling of Values
@@ -387,9 +380,7 @@ CWE-243,Creation of chroot Jail Without Changing Working Directory
 CWE-244,Improper Clearing of Heap Memory Before Release ('Heap Inspection')
 CWE-245,J2EE Bad Practices: Direct Management of Connections
 CWE-246,J2EE Bad Practices: Direct Use of Sockets
-CWE-247,DEPRECATED: Reliance on DNS Lookups in a Security Decision
 CWE-248,Uncaught Exception
-CWE-249,DEPRECATED: Often Misused: Path Manipulation
 CWE-25,Path Traversal: '/../filedir'
 CWE-250,Execution with Unnecessary Privileges
 CWE-252,Unchecked Return Value
@@ -431,7 +422,6 @@ CWE-289,Authentication Bypass by Alternate Name
 CWE-29,Path Traversal: '\..\filename'
 CWE-290,Authentication Bypass by Spoofing
 CWE-291,Reliance on IP Address for Authentication
-CWE-292,DEPRECATED: Trusting Self-reported DNS Name
 CWE-293,Using Referer Field for Authentication
 CWE-294,Authentication Bypass by Capture-replay
 CWE-295,Improper Certificate Validation
@@ -507,7 +497,6 @@ CWE-360,Trust of System Event Data
 CWE-362,Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')
 CWE-363,Race Condition Enabling Link Following
 CWE-364,Signal Handler Race Condition
-CWE-365,DEPRECATED: Race Condition in Switch
 CWE-366,Race Condition within a Thread
 CWE-367,Time-of-check Time-of-use (TOCTOU) Race Condition
 CWE-368,Context Switching Race Condition
@@ -515,7 +504,6 @@ CWE-369,Divide By Zero
 CWE-37,Path Traversal: '/absolute/pathname/here'
 CWE-370,Missing Check for Certificate Revocation after Initial Check
 CWE-372,Incomplete Internal State Distinction
-CWE-373,DEPRECATED: State Synchronization Error
 CWE-374,Passing Mutable Objects to an Untrusted Method
 CWE-375,Returning a Mutable Object to an Untrusted Caller
 CWE-377,Insecure Temporary File
@@ -559,7 +547,6 @@ CWE-42,Path Equivalence: 'filename.' (Trailing Dot)
 CWE-420,Unprotected Alternate Channel
 CWE-421,Race Condition During Access to Alternate Channel
 CWE-422,Unprotected Windows Messaging Channel ('Shatter')
-CWE-423,DEPRECATED: Proxied Trusted Channel
 CWE-424,Improper Protection of Alternate Path
 CWE-425,Direct Request ('Forced Browsing')
 CWE-426,Untrusted Search Path
@@ -578,7 +565,6 @@ CWE-439,Behavioral Change in New Version or Environment
 CWE-44,Path Equivalence: 'file.name' (Internal Dot)
 CWE-440,Expected Behavior Violation
 CWE-441,Unintended Proxy or Intermediary ('Confused Deputy')
-CWE-443,DEPRECATED: HTTP response splitting
 CWE-444,Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')
 CWE-446,UI Discrepancy for Security Feature
 CWE-447,Unimplemented or Unsupported Feature in UI
@@ -592,7 +578,6 @@ CWE-454,External Initialization of Trusted Variables or Data Stores
 CWE-455,Non-exit on Failed Initialization
 CWE-456,Missing Initialization of a Variable
 CWE-457,Use of Uninitialized Variable
-CWE-458,DEPRECATED: Incorrect Initialization
 CWE-459,Incomplete Cleanup
 CWE-46,Path Equivalence: 'filename ' (Trailing Space)
 CWE-460,Improper Cleanup on Thrown Exception
@@ -649,7 +634,6 @@ CWE-511,Logic/Time Bomb
 CWE-512,Spyware
 CWE-514,Covert Channel
 CWE-515,Covert Storage Channel
-CWE-516,DEPRECATED: Covert Timing Channel
 CWE-52,Path Equivalence: '/multiple/trailing/slash//'
 CWE-520,.NET Misconfiguration: Use of Impersonation
 CWE-521,Weak Password Requirements
@@ -665,8 +649,6 @@ CWE-53,Path Equivalence: '\multiple\\internal\backslash'
 CWE-530,Exposure of Backup File to an Unauthorized Control Sphere
 CWE-531,Inclusion of Sensitive Information in Test Code
 CWE-532,Insertion of Sensitive Information into Log File
-CWE-533,DEPRECATED: Information Exposure Through Server Log Files
-CWE-534,DEPRECATED: Information Exposure Through Debug Log Files
 CWE-535,Exposure of Information Through Shell Error Message
 CWE-536,Servlet Runtime Error Message Containing Sensitive Information
 CWE-537,Java Runtime Error Message Containing Sensitive Information
@@ -675,10 +657,8 @@ CWE-539,Use of Persistent Cookies Containing Sensitive Information
 CWE-54,Path Equivalence: 'filedir\' (Trailing Backslash)
 CWE-540,Inclusion of Sensitive Information in Source Code
 CWE-541,Inclusion of Sensitive Information in an Include File
-CWE-542,DEPRECATED: Information Exposure Through Cleanup Log Files
 CWE-543,Use of Singleton Pattern Without Synchronization in a Multithreaded Context
 CWE-544,Missing Standardized Error Handling Mechanism
-CWE-545,DEPRECATED: Use of Dynamic Class Loading
 CWE-546,Suspicious Comment
 CWE-547,"Use of Hard-coded, Security-relevant Constants"
 CWE-548,Exposure of Information Through Directory Listing
@@ -727,11 +707,9 @@ CWE-589,Call to Non-ubiquitous API
 CWE-59,Improper Link Resolution Before File Access ('Link Following')
 CWE-590,Free of Memory not on the Heap
 CWE-591,Sensitive Data Storage in Improperly Locked Memory
-CWE-592,DEPRECATED: Authentication Bypass Issues
 CWE-593,Authentication Bypass: OpenSSL CTX Object Modified after SSL Objects are Created
 CWE-594,J2EE Framework: Saving Unserializable Objects to Disk
 CWE-595,Comparison of Object References Instead of Object Contents
-CWE-596,DEPRECATED: Incorrect Semantic Object Comparison
 CWE-597,Use of Wrong Operator in String Comparison
 CWE-598,Use of HTTP Request With Sensitive Query String
 CWE-599,Missing Validation of OpenSSL Certificate
@@ -834,7 +812,6 @@ CWE-705,Incorrect Control Flow Scoping
 CWE-706,Use of Incorrectly-Resolved Name or Reference
 CWE-707,Improper Neutralization
 CWE-708,Incorrect Ownership Assignment
-CWE-71,DEPRECATED: Apple '.DS_Store'
 CWE-710,Improper Adherence to Coding Standards
 CWE-72,Improper Handling of Apple HFS+ Alternate Data Stream Path
 CWE-73,External Control of File Name or Path
@@ -859,7 +836,6 @@ CWE-765,Multiple Unlocks of a Critical Resource
 CWE-766,Critical Data Element Declared Public
 CWE-767,Access to Critical Private Variable via Public Method
 CWE-768,Incorrect Short Circuit Evaluation
-CWE-769,DEPRECATED: Uncontrolled File Descriptor Consumption
 CWE-77,Improper Neutralization of Special Elements used in a Command ('Command Injection')
 CWE-770,Allocation of Resources Without Limits or Throttling
 CWE-771,Missing Reference to Active Allocated Resource
@@ -947,7 +923,6 @@ CWE-915,Improperly Controlled Modification of Dynamically-Determined Object Attr
 CWE-916,Use of Password Hash With Insufficient Computational Effort
 CWE-917,Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')
 CWE-918,Server-Side Request Forgery (SSRF)
-CWE-92,DEPRECATED: Improper Sanitization of Custom Special Characters
 CWE-920,Improper Restriction of Power Consumption
 CWE-921,Storage of Sensitive Data in a Mechanism without Access Control
 CWE-922,Insecure Storage of Sensitive Information
